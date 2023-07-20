@@ -1,6 +1,6 @@
 import fs from "fs"
 import { DirectSecp256k1HdWallet } from "@cosmjs/proto-signing"
-import { Decimal } from "@cosmjs/math";
+import { Decimal } from "@cosmjs/math"
 import { SigningCosmWasmClient, SigningCosmWasmClientOptions } from "@cosmjs/cosmwasm-stargate"
 import { GasPrice } from "@cosmjs/stargate"
 import { Options } from "./types"
@@ -31,18 +31,17 @@ export const loadOrCreateWallet = async (
 }
 
 export const connect = async (
+    endpoint: string,
     wallet: DirectSecp256k1HdWallet,
-    options: Options
+    options: SigningCosmWasmClientOptions = {}
 ): Promise<SigningCosmWasmClient> => {
 
-    const clientOptions: SigningCosmWasmClientOptions = {
-        prefix: options.bech32prefix,
+    const clientOptions = {
         gasPrice: options.gasPrice,
     }
 
-    console.log("wallet ->", wallet)
     return await SigningCosmWasmClient.connectWithSigner(
-        options.httpUrl, // rpc address
+        endpoint, // rpc address
         wallet,
         clientOptions
     )

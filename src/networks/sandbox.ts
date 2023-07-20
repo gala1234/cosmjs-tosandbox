@@ -4,7 +4,9 @@ import process from "os";
 import { Options } from "../types";
 
 export const sandBoxOptions: Options = {
-    httpUrl: 'https://sandbox-validator1.nymtech.net/',
+    // httpUrl: 'https://sandbox-validator1.nymtech.net',
+    httpUrl: 'https://qa-validator.qa.nymte.ch/', // good one
+    // httpUrl: 'https://qa-validator.nymtech.net',
     networkId: 'nymnet',
     bech32prefix: 'n',
     feeToken: 'unym',
@@ -15,5 +17,5 @@ export const sandBoxOptions: Options = {
         init: 1000000,
         exec: 500000,
     },
-    gasPrice: GasPrice.fromString("0.25unym"),
+    gasPrice: GasPrice.fromString("0.025unym"),
 }
